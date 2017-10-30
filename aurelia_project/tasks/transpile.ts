@@ -30,8 +30,9 @@ function buildTypeScript() {
   let src = gulp.src(project.transpiler.source)
     .pipe(changedInPlace({firstPass: true}));
 
-  return eventStream.merge(dts, src)
-    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+    return eventStream.merge(dts, src)
+    .pipe(plumber())
+    // .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
     .pipe(sourcemaps.init())
     .pipe(typescriptCompiler())
     .pipe(sourcemaps.write({ sourceRoot: 'src' }))

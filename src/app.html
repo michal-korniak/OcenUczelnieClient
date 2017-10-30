@@ -1,3 +1,7 @@
 <template>
-<router-view></router-view>
+  <require from="bootstrap/css/bootstrap.css"></require> 
+  <compose view-model="./components/navbar"></compose>
+  <div class="container">
+    <router-view></router-view>
+  </div>
 </template>
