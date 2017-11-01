@@ -1,7 +1,7 @@
 export class RegisterUserModel
 {
     email: string;
-    login: string;
+    name: string;
     password: string;
     confirmPassword: string;
 }

@@ -1,3 +1,22 @@
 <template>
-    LOGOWANIE
+    <div validation-errors.bind="errors">
+        <div class="alert alert-danger" if.bind="validationController.errors.length>0">
+            <ul>
+                <li repeat.for="error of validationController.errors">
+                    ${error.message}
+                </li>
+            </ul>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="login-user-email">Email</label>
+                <input type="email" value.bind="model.email & validate" class="form-control" id="login-user-email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="login-user-password">Hasło</label>
+                <input type="password" value.bind="model.password & validate" class="form-control" id="login-user-password" placeholder="Hasło">
+            </div>
+            <button type="submit" click.delegate="login()" class="btn btn-primary">Loguj</button>
+        </form>
+    </div>
 </template>

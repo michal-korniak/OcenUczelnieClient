@@ -13,8 +13,8 @@
                 <input type="email" value.bind="model.email & validate" class="form-control" id="register-user-email" placeholder="Email">
             </div>
             <div class="form-group">
-                <label for="register-user-login">Login</label>
-                <input type="text" value.bind="model.login & validate" class="form-control" id="register-user-login" placeholder="Login">
+                <label for="register-user-name">Login</label>
+                <input type="text" value.bind="model.name & validate" class="form-control" id="register-user-name" placeholder="Login">
             </div>
             <div class="form-group">
                 <label for="register-user-password">Hasło</label>
@@ -24,7 +24,7 @@
                 <label for="register-user-confirm-password">Potwierdź Hasło</label>
                 <input type="password" value.bind="model.confirmPassword & validate" class="form-control" id="register-user-confirm-password" placeholder="Potwierdź Hasło">
             </div>
-            <button type="submit" click.delegate="register()" class="btn btn-primary">Potwierdź</button>
+            <button type="submit" click.delegate="register()" class="btn btn-primary">Rejestruj</button>
         </form>
     </div>
 </template>

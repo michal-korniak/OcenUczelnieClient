@@ -5,7 +5,7 @@ export class RegisterUserValidator
     validate(model: RegisterUserModel)
     {
         ValidationRules
-        .ensure((m:RegisterUserModel)=>m.login)
+        .ensure((m:RegisterUserModel)=>m.name)
             .required().withMessage("Login jest wymagany.")
         .ensure((m:RegisterUserModel)=>m.email)
             .required().withMessage("Email jest wymagany.")
