@@ -1,3 +1,30 @@
 <template>
-    REJESTRACJA
+    <div validation-errors.bind="errors">
+        <div class="alert alert-danger" if.bind="validationController.errors.length>0">
+            <ul>
+                <li repeat.for="error of validationController.errors">
+                    ${error.message}
+                </li>
+            </ul>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="register-user-email">Email</label>
+                <input type="email" value.bind="model.email & validate" class="form-control" id="register-user-email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="register-user-login">Login</label>
+                <input type="text" value.bind="model.login & validate" class="form-control" id="register-user-login" placeholder="Login">
+            </div>
+            <div class="form-group">
+                <label for="register-user-password">Hasło</label>
+                <input type="password" value.bind="model.password & validate" class="form-control" id="register-user-password" placeholder="Hasło">
+            </div>
+            <div class="form-group">
+                <label for="register-user-confirm-password">Potwierdź Hasło</label>
+                <input type="password" value.bind="model.confirmPassword & validate" class="form-control" id="register-user-confirm-password" placeholder="Potwierdź Hasło">
+            </div>
+            <button type="submit" click.delegate="register()" class="btn btn-primary">Potwierdź</button>
+        </form>
+    </div>
 </template>

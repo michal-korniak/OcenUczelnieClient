@@ -13,6 +13,8 @@ export function configure(aurelia: Aurelia) {
   if (environment.testing) {
     aurelia.use.plugin('aurelia-testing');
   }
-
+  //custom plugins
+  aurelia.use.plugin('aurelia-validation');
+  //
   aurelia.start().then(() => aurelia.setRoot());
 }
