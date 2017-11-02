@@ -3,8 +3,8 @@ import { ValidationControllerFactory, ValidationRules, ValidationController } fr
 import { autoinject } from "aurelia-dependency-injection";
 import { RegisterUserValidator } from "../validators/register-user-validator";
 import { UserService } from "../services/user-service";
-import {Router} from 'aurelia-router';
-import * as toastr from 'toastr';
+import { Router } from 'aurelia-router';
+import { Toastr } from "../../core/taostr";
 
 @autoinject()
 export class RegisterUser {
@@ -13,8 +13,9 @@ export class RegisterUser {
     userService: UserService;
 
     constructor(controllerFactory: ValidationControllerFactory, registerUserValidator: RegisterUserValidator,
-        userService: UserService, private router:Router) {
-        this.model = new RegisterUserModel();
+        userService: UserService, private router: Router, private toastr: Toastr)
+        {
+        this.model=new RegisterUserModel();
         this.userService = userService;
 
         this.validationController = controllerFactory.createForCurrentScope();
@@ -27,11 +28,10 @@ export class RegisterUser {
         }
         catch (ex) {
             let error: Error = ex;
-            this.validationController.reset();
-            this.validationController.addError(error.message,{});
+            this.toastr.error(error.message);
             return;
         }
-        toastr.success("Zarejestrowano!");
+        this.toastr.success("Zarejestrowano!");
         this.router.navigate("#/user/login");
 
 

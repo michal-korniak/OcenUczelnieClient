@@ -1,4 +1,7 @@
 <template>
+    <div class="page-header text-center">
+        <h1>Rejestracja</h1>
+    </div>
     <div validation-errors.bind="errors">
         <div class="alert alert-danger" if.bind="validationController.errors.length>0">
             <ul>
@@ -13,8 +16,8 @@
                 <input type="email" value.bind="model.email & validate" class="form-control" id="register-user-email" placeholder="Email">
             </div>
             <div class="form-group">
-                <label for="register-user-name">Login</label>
-                <input type="text" value.bind="model.name & validate" class="form-control" id="register-user-name" placeholder="Login">
+                <label for="register-user-name">Nazwa</label>
+                <input type="text" value.bind="model.name & validate" class="form-control" id="register-user-name" placeholder="Nazwa">
             </div>
             <div class="form-group">
                 <label for="register-user-password">Hasło</label>
@@ -22,9 +25,10 @@
             </div>
             <div class="form-group">
                 <label for="register-user-confirm-password">Potwierdź Hasło</label>
-                <input type="password" value.bind="model.confirmPassword & validate" class="form-control" id="register-user-confirm-password" placeholder="Potwierdź Hasło">
+                <input type="password" value.bind="model.confirmPassword & validate" class="form-control" id="register-user-confirm-password"
+                    placeholder="Potwierdź Hasło">
             </div>
-            <button type="submit" click.delegate="register()" class="btn btn-primary">Rejestruj</button>
+            <button type="submit" disabled.bind="validationController.errors.length>0" click.delegate="register()" class="btn btn-primary">Rejestruj</button>
         </form>
     </div>
 </template>
