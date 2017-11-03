@@ -10,7 +10,7 @@ export class AuthorizeStep {
     }
     async run(navigationInstruction: NavigationInstruction, next: Next): Promise<any> {
         
-        let model:IdentityModel=await this.identityService.getIdentityData();
+        let model:IdentityModel=await this.identityService.getIdentityModel();
         let role=model?model.role:null;
         let requiredRoles = navigationInstruction.getAllInstructions().map(i => i.config.settings.roles)[0];
         

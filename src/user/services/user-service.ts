@@ -3,8 +3,9 @@ import { RegisterUserModel } from "../models/register-user-model";
 import {HttpClient} from 'aurelia-fetch-client'
 import { autoinject } from "aurelia-dependency-injection";
 import { LoginUserModel } from "../models/login-user-model";
-import { AuthModel } from "../models/auth-model";
+
 import { AuthService } from "../../core/auth-service";
+import { AuthModel } from "../../core/models/auth-model";
 
 @autoinject()
 export class UserService extends DataService
@@ -20,5 +21,9 @@ export class UserService extends DataService
     loginUser(model: LoginUserModel): Promise<AuthModel>
     {
         return super.post('user/login',false,model);
+    }
+    logoutUser()
+    {
+        this.authService.removeToken();
     }
 }

@@ -1,12 +1,20 @@
-import { RouterConfiguration, RouteConfig } from "aurelia-router";
+import { RouterConfiguration, RouteConfig, activationStrategy } from "aurelia-router";
 import { AuthorizeStep } from "./core/authorize-step";
+import { IdentityService } from "./core/identity-service";
+import { autoinject } from "aurelia-dependency-injection";
 
+@autoinject()
 export class App {
+  constructor(private identityService: IdentityService)
+  {
+    console.log(this.identityService)
+  }
+
   configureRouter(config: RouterConfiguration) {
     config.title = "OcenUczelnie"
     config.addAuthorizeStep(AuthorizeStep);
     config.map([
-      { route: '', moduleId: './home' },
+      { route: ['','home'], moduleId: './home',activationStrategy:activationStrategy.invokeLifecycle },
       { route: 'user', moduleId: "./user/config/route-config" },
       { route: 'test', moduleId: './test', settings: { roles: ['user'] } }
     ]);

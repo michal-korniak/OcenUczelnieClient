@@ -2,7 +2,7 @@ import { HttpClient, json } from 'aurelia-fetch-client'
 import { AuthService } from './auth-service';
 
 export abstract class DataService {
-    constructor(private httpClient: HttpClient, private authService: AuthService) {
+    constructor(private httpClient: HttpClient, protected authService: AuthService) {
         httpClient.configure(c => c.withBaseUrl('http://localhost:5000/'));
     }
     protected async get<TResult>(path: string, isSecured: boolean = false): Promise<TResult> {
