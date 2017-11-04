@@ -33,9 +33,8 @@ export class LoginUser {
         }
         await this.authService.setToken(authModel);
         let model: IdentityModel = await this.identityService.getIdentityModel()
-        this.toastr.success(`Cześć ${model.name}!`, "");
         window.location.reload(true);
-        this.router.navigate("#/home/2",{ replace: true});
+        this.router.navigate("#/home",{ replace: true});
 
     }
 }

@@ -13,8 +13,7 @@ export class LogoutUser
     activate()
     {
         this.userService.logoutUser();
-        this.toastr.info("Zostałeś wylogwany!");
         window.location.reload(true);
-        this.router.navigate("#/home");
+        this.router.navigate("#/home"); 
     }
 }

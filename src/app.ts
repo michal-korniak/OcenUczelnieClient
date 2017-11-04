@@ -15,7 +15,7 @@ export class App {
     config.addAuthorizeStep(AuthorizeStep);
     config.map([
       { route: ['','home'], moduleId: './home',activationStrategy:activationStrategy.invokeLifecycle },
-      { route: 'user', moduleId: "./user/config/route-config" },
+      { route: 'user', moduleId: "./users/config/route-config" },
       { route: 'test', moduleId: './test', settings: { roles: ['user'] } }
     ]);
   }

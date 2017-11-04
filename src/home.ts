@@ -1,17 +1,17 @@
-import { IdentityService } from "./core/identity-service";
 import { autoinject } from "aurelia-dependency-injection";
+import { UniversityService } from "./universities/services/university-service";
+import { UniversityModel } from "./universities/models/university-model";
+
+
 
 @autoinject()
-export class Home
-{
-    userName: string;
-    constructor(private identityService: IdentityService)
-    {
-        
+export class Home {
+    universites: UniversityModel[];
+    constructor(private universityService: UniversityService) {
     }
-    async activate()
-    {
-        if(this.identityService.isUserLogged())
-            this.userName=(await this.identityService.getIdentityModel()).name;
+    async activate() {
+        this.universites = await this.universityService.browseAll();
+        console.log(this.universites[0]);
     }
+
 }

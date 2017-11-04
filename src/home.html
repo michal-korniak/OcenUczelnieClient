@@ -1,8 +1,19 @@
 <template>
-    <div class="page-header text-center">
-        <h1>HOME</h1>
-    </div>
-    <div class="text-center" if.bind="identityService.isUserLogged()">
-        <p><h4>Jesteś zalogowany jako <strong>${userName}</strong></h4></p>
+    <compose view="./components/search-box.html"></compose>
+    <link rel="stylesheet" type="text/css" href="../css/thumbnail.css">
+    <br>
+    <div class="row">
+        <div class="col-md-4" repeat.for="univer of universites">
+            <div class="thumbnail">
+                <div class="col-md-5">
+                    <img src="../images/${univer.imagePath}" alt="">
+                </div>
+                <div class="col-md-7">
+                    <h4>${univer.name}</h4>
+                    <p></p>
+                    <p>${univer.place}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

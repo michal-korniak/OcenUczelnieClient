@@ -1,0 +1,18 @@
+.row{
+    margin-top:25spx;
+    margin-left: 25px;
+}
+
+div.thumbnail{
+    display: inline-flex;
+}
+
+div.thumbnail div{
+    float: left;
+    margin: 4%;
+}
+
+div.thumbnail div:last-child{
+    margin-top: 25px;
+    margin-top: 25px;
+}
