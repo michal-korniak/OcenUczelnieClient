@@ -5,8 +5,7 @@ import { autoinject } from "aurelia-dependency-injection";
 
 @autoinject()
 export class App {
-  constructor(private identityService: IdentityService)
-  {
+  constructor(private identityService: IdentityService) {
     console.log(this.identityService)
   }
 
@@ -14,8 +13,9 @@ export class App {
     config.title = "OcenUczelnie"
     config.addAuthorizeStep(AuthorizeStep);
     config.map([
-      { route: ['','home'], moduleId: './home',activationStrategy:activationStrategy.invokeLifecycle },
+      { route: ['', 'home'], moduleId: './home', activationStrategy: activationStrategy.invokeLifecycle },
       { route: 'user', moduleId: "./users/config/route-config" },
+      { route: 'universities', moduleId: "./universities/config/route-config" },
       { route: 'test', moduleId: './test', settings: { roles: ['user'] } }
     ]);
   }

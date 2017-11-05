@@ -1,0 +1,96 @@
+<template>
+    <link rel="stylesheet" type="text/css" href="../../../css/filter-courses.css">
+    <div class="container">
+        <div class="row">
+            <section class="content">
+                <h1>Kierunki</h1>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <p>
+                                <strong>Wybierz wydział</strong>
+                            </p>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-filter" data-target="all">Wszystkie</button>
+                                <button type="button" class="btn btn-success btn-filter" data-target="budownictwo">Budownictwa</button>
+                                <button type="button" class="btn btn-warning btn-filter" data-target="elektrotechnika">Elektrotechniki i Informatyki</button>
+                                <button type="button" class="btn btn-danger btn-filter" data-target="inzynieria">Inżynierii Środowiska</button>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="table table-filter">
+                                <tbody>
+                                    <tr data-status="elektrotechnika">
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h4 class="title">
+                                                        Informatyka
+                                                        <span class="pull-right warningColor">(Elektrochniki i Informatyki)</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr data-status="elektrotechnika">
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h4 class="title">
+                                                        Fizyka
+                                                        <span class="pull-right warningColor">(Elektrochniki i Informatyki)</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="inzynieria">
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h4 class="title">
+                                                        Ochrona Środowiska
+                                                        <span class="pull-right dangerColor">(Inżynierii Środowiska)</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="budownictwo" class="selected">
+
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h4 class="title">
+                                                        Budownictwo
+                                                        <span class="pull-right successColor">(Budownictwo)</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="inzynieria">
+                                        <td>
+                                            <div class="media">
+
+                                                <div class="media-body">
+                                                    <h4 class="title">
+                                                        Inżynieria Odnawialnych Źródeł Energii
+                                                        <span class="pull-right dangerColor">(Inżynierii Środowiska)</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</template>
