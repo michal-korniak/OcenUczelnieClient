@@ -1,7 +1,8 @@
 export class UniversityRouterConfig {
     configureRouter(config) {
       config.map([
-        { route: 'details', moduleId:'../view-models/university-details'},
+        { route: '', moduleId:'../../home'},
+        { route: ':id', moduleId:'../view-models/university-details'},
       ])
   
     }

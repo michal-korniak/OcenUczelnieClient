@@ -2,6 +2,7 @@ import { autoinject } from "aurelia-dependency-injection";
 import { UniversityService } from "./universities/services/university-service";
 import { UniversityModel } from "./universities/models/university-model";
 import { observable } from "aurelia-binding";
+import { Router } from "aurelia-router";
 
 
 
@@ -11,11 +12,12 @@ export class Home {
     filterUniversites: UniversityModel[];
 
     @observable searchPhrase: string;
-    constructor(private universityService: UniversityService) {
+    constructor(private universityService: UniversityService, private router: Router) {
     }
     async activate() {      
         this.universites = await this.universityService.browseAll();
         this.searchPhrase="";
+        console.log();
     }
     searchPhraseChanged(newValue: string)
     {

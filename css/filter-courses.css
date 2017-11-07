@@ -26,7 +26,7 @@
         background-color: #fcfcfc;
     }
     .panel .btn-group {
-        margin: 15px 0 30px;
+        margin: 10px 0 10px;
     }
     .panel .btn-group .btn {
         transition: background-color .3s ease;
@@ -78,6 +78,51 @@
     .table-filter .media .title span.dangerColor {
         color: #d9534f;
     }
+    .table-filter .media .title span.primaryColor {
+        color: #337ab7;
+    }
+    .table-filter .media .title span.infoColor {
+        color: #5bc0de;
+    }
+
+    .table-filter .media .title span.redColor {
+        color: hsl(0, 86%, 30%);
+    }
+    .table-filter .media .title span.brownColor {
+        color: hsl(27, 86%, 30%);
+    }
+    .table-filter .media .title span.orangeColor {
+        color: hsl(48, 86%, 30%);
+    }
+    .table-filter .media .title span.lightgreenColor {
+        color: hsl(64, 86%, 30%);
+    }
+    .table-filter .media .title span.greenColor {
+        color: hsl(84, 86%, 30%);
+    }
+    .table-filter .media .title span.darkblueColor {
+        color: hsl(225, 100%, 14%);
+    }
+    .table-filter .media .title span.violetColor {
+        color: hsl(299, 100%, 14%);
+    }
+    .table-filter .media .title span.darkbrownColor {
+        color: hsl(349, 17%, 8%);
+    }
+    .table-filter .media .title span.yellowColor {
+        color: hsl(62, 100%, 27%);
+    }
+    .table-filter .media .title span.grayColor {
+        color: hsl(195, 0%, 35%);
+    }
+    .table-filter .media .title span.pinkColor {
+        color: hsl(312, 80%, 43%);
+    }
+    .table-filter .media .title span.blueColor {
+        color: hsl(195, 60%, 35%);
+    }
+
+
     .table-filter .media .summary {
         font-size: 14px;
     }

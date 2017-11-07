@@ -7,7 +7,7 @@
                     <div class="input-group stylish-input-group">
                         <input type="text" class="form-control" value.bind="searchPhrase" placeholder="Szukaj">
                         <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-search"></span>
+                            <span class="glyphicon glyphicon-search"></span>
                         </span>
                     </div>
                 </div>
@@ -17,17 +17,22 @@
     <link rel="stylesheet" type="text/css" href="../css/thumbnail.css">
     <br>
     <div class="row">
+
         <div class="col-md-4" repeat.for="univer of filterUniversites">
-            <div class="thumbnail">
-                <div class="col-md-5">
-                    <img src="../images/${univer.imagePath}" alt="">
+            <a href="${this.router.baseUrl}/#/universities/${univer.id}">
+                <div class="thumbnail">
+                    <div class="col-md-5">
+                        <img src="../images/${univer.imagePath}">
+                    </div>
+                    <div class="col-md-7">
+                        <h4>${univer.name}</h4>
+                        <p></p>
+                        <p>${univer.place}</p>
+                        <p></p>
+                    </div>
                 </div>
-                <div class="col-md-7">
-                    <h4>${univer.name}</h4>
-                    <p></p>
-                    <p>${univer.place}</p>
-                </div>
-            </div>
+            </a>
         </div>
+
     </div>
 </template>
