@@ -4,6 +4,7 @@ import { UniversityDetailsModel } from '../models/university-details-model';
 import { autoinject } from 'aurelia-dependency-injection';
 import { CourseModel } from '../../courses/models/course-model';
 import { DepartmentColors } from '../models/department-colors';
+import { Router } from 'aurelia-router';
 
 @autoinject()
 export class UniversityDetails {
@@ -11,7 +12,7 @@ export class UniversityDetails {
 
     model: UniversityDetailsModel;
     colors: Map<string, DepartmentColors> = new Map<string, DepartmentColors>();
-    constructor(private universityService: UniversityService) {
+    constructor(private universityService: UniversityService, private router:Router) {
     }
     async activate(params: any) {
         this.model = await this.universityService.getDetails(params.id);
@@ -73,6 +74,10 @@ export class UniversityDetails {
     }
     getColorClass(name: string): string {
         return this.colors.get(name).colorClass;
+    }
+    redirectToCourseDetails(id: number)
+    {
+        this.router.navigate(`#/course/${id}`);
     }
 
 }

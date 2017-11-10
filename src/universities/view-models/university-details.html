@@ -2,15 +2,15 @@
     <link rel="stylesheet" type="text/css" href="../../../css/filter-courses.css">
     <link rel="stylesheet" type="text/css" href="../../../css/buttons.css">
     <div class="container">
-                        <div class="thumbnail">
-                            <img src="../images/${model.imagePath}">
-                            <div class="caption text-center">
-                                <h2>${model.name}</h2>
-                                <p></p>
-                                <h4>${model.place}</h4>
-                                <p></p>
-                            </div>
-                        </div>
+        <div class="thumbnail">
+            <img src="../images/${model.imagePath}">
+            <div class="caption text-center">
+                <h2>${model.name}</h2>
+                <p></p>
+                <h4>${model.place}</h4>
+                <p></p>
+            </div>
+        </div>
         <div class="row">
             <section class="content">
                 <div class="panel panel-default">
@@ -23,6 +23,7 @@
                                 <button type="button" class="btn btn-sm btn-filter" data-target="all">Wszystko</button>
                             </div>
                             <div class="btn-group" repeat.for="department of model.departments">
+
                                 <button type="button" class="btn btn-sm btn-filter ${getBtnClass(department)}" data-target="${department}">${department}</button>
                             </div>
                         </div>
@@ -30,18 +31,18 @@
                         <div class="table-container">
                             <table class="table table-filter">
                                 <tbody repeat.for="course of model.courses">
-                                        <tr data-status="${course.department}">
-                                            <td>
-                                                <div class="media">
-                                                    <div class="media-body">
-                                                        <h4 class="title">
-                                                            ${course.name}
-                                                            <span class="pull-right ${getColorClass(course.department)}">(${course.department})</span>
-                                                        </h4>
-                                                    </div>
+                                    <tr data-status="${course.department}">
+                                        <td click.delegate="redirectToCourseDetails(course.id)">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h4 class="title">
+                                                        ${course.name}
+                                                        <span class="pull-right ${getColorClass(course.department)}">(${course.department})</span>
+                                                    </h4>
                                                 </div>
-                                            </td>
-                                        </tr>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                         </div>
 

@@ -1,0 +1,64 @@
+<template>
+    <link rel="stylesheet" type="text/css" href="../css/post-container.css">
+    <link rel="stylesheet" type="text/css" href="../css/review.css">
+    <div class="post-container">
+        <div class="post-thumb">
+            <img src="../../../images/${model.university.imagePath}">
+        </div>
+        <div class="post-content text-center">
+            <h1>${courseModel.name}</h1>
+            <br>
+            <h4>
+                <strong>${model.university.name}: ${model.department}</strong>
+            </h4>
+            <p>Średnia ocen: ${model.avgRating}/5 (${model.countRating})</p>
+        </div>
+    </div>
+    <div id="newReview" class="container" if.bind="identityService.isUserLogged()">
+        <div class="row" style="margin-top:50px; margin-right:2px; margin-left:2px">
+            <div class="well well-sm">
+                <div class="text-center">
+                    <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Zostaw swoją opinie!</a>
+                </div>
+
+                <div class="row" id="post-review-box" style="display:none;">
+                    <div class="col-md-12">
+                        <form accept-charset="UTF-8" action="" method="post"></form>
+                        <input id="ratings-hidden" value.bind="newReview.rating" name="rating" type="hidden">
+                        <textarea class="form-control animated" value.bind="newReview.content" cols="50" id="new-review" name="comment" placeholder="Opisz swoje doświadczenia z tym kierunkiem..."
+                            rows="5"></textarea>
+
+                        <div class="text-right">
+                            <div class="stars starrr" data-rating="0"></div>
+                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+                                <span class="glyphicon glyphicon-remove"></span>Zrezygnuj</a>
+                            <button class="btn btn-success btn-lg" click.delegate="postReview()" type="submit">Zapisz</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="reviews" class="container">
+        <div class="row" style="margin-top:50px;"></div>
+        <div class="well well-sm" repeat.for="review of model.reviews">
+            <div class="pull-left">
+                <strong>${review.user.name}</strong>
+            </div>
+            <div class="pull-right">
+                <span style="font-size:1.5em;" class="glyphicon glyphicon-thumbs-down"></span>
+                <span style="font-size:1.5em;" class="glyphicon glyphicon-thumbs-up"></span>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <p>${review.content}</p>
+
+            <div class="text-right">
+                <div class="stars starrr static-starrr" data-rating="${review.rating}">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</template>

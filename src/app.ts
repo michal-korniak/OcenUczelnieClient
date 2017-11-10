@@ -15,8 +15,8 @@ export class App {
     config.map([
       { route: ['', 'home'], moduleId: './home', activationStrategy: activationStrategy.invokeLifecycle },
       { route: 'user', moduleId: "./users/config/route-config" },
-      { route: 'universities', moduleId: "./universities/config/route-config" },
-      { route: 'test', moduleId: './test', settings: { roles: ['user'] } }
+      { route: 'university', moduleId: "./universities/config/route-config" },
+      { route: 'course', moduleId: "./courses/config/route-config" }
     ]);
   }
 }

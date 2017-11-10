@@ -1,38 +1,38 @@
 <template>
-    <link rel="stylesheet" type="text/css" href="../css/search-box.css">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <div id="imaginary_container">
-                    <div class="input-group stylish-input-group">
-                        <input type="text" class="form-control" value.bind="searchPhrase" placeholder="Szukaj">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </span>
+        <link rel="stylesheet" type="text/css" href="../css/search-box.css">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div id="imaginary_container">
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" value.bind="searchPhrase" placeholder="Szukaj">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <link rel="stylesheet" type="text/css" href="../css/thumbnail.css">
-    <br>
-    <div class="row">
-
-        <div class="col-md-4" repeat.for="univer of filterUniversites">
-            <a href="${this.router.baseUrl}/#/universities/${univer.id}">
-                <div class="thumbnail">
-                    <div class="col-md-5">
-                        <img src="../images/${univer.imagePath}">
+        <link rel="stylesheet" type="text/css" href="../css/thumbnail.css">
+        <br>
+        <div class="row">
+    
+            <div class="col-md-4" repeat.for="univer of filterUniversites">
+                <a href="${this.router.baseUrl}/#/university/${univer.id}">
+                    <div class="thumbnail">
+                        <div class="col-md-5">
+                            <img src="../images/${univer.imagePath}">
+                        </div>
+                        <div class="col-md-7">
+                            <h4>${univer.name}</h4>
+                            <p></p>
+                            <p>${univer.place}</p>
+                            <p></p>
+                        </div>
                     </div>
-                    <div class="col-md-7">
-                        <h4>${univer.name}</h4>
-                        <p></p>
-                        <p>${univer.place}</p>
-                        <p></p>
-                    </div>
-                </div>
-            </a>
+                </a>
+            </div>
+    
         </div>
-
-    </div>
-</template>
+    </template>
