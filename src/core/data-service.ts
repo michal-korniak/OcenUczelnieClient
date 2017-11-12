@@ -8,10 +8,10 @@ export abstract class DataService {
     protected async get<TResult>(path: string, isSecured: boolean = false): Promise<TResult> {
         return this.createRequest<TResult>(path, 'GET', isSecured);
     }
-    protected async post<TResult>(path: string, isSecured: boolean, body: any, ): Promise<TResult> {
+    protected async post<TResult>(path: string, isSecured: boolean, body: any=null): Promise<TResult> {
         return this.createRequest<TResult>(path, 'POST', isSecured, body)
     }
-    protected async put<TResult>(path: string, isSecured: boolean, body: any): Promise<TResult> {
+    protected async put<TResult>(path: string, isSecured: boolean, body: any=null): Promise<TResult> {
         return this.createRequest<TResult>(path, 'PUT', isSecured, body)
     }
     protected async delete<TResult>(path: string, isSecured: boolean): Promise<TResult> {

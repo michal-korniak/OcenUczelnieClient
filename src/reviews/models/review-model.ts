@@ -5,5 +5,6 @@ export class ReviewModel
     id:string;
     rating: number;
     content: string;
+    points: number;
     user: UserModel;
 }

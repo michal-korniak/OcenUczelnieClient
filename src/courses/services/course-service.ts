@@ -3,8 +3,6 @@ import { autoinject } from "aurelia-dependency-injection";
 import { AuthService } from "../../core/auth-service";
 import {HttpClient} from 'aurelia-fetch-client'
 import { CourseModel } from "../models/course-model";
-import { ReviewModel } from "../../reviews/models/review-model";
-import { NewReviewModel } from "../../reviews/models/new-review-model";
 @autoinject()
 export class CourseService extends DataService
 {
@@ -16,8 +14,5 @@ export class CourseService extends DataService
     {
         return await super.get<CourseModel>(`course/${courseId}/details`,false)
     }
-    async postReview(courseId: string,newReview:NewReviewModel)
-    {
-        await super.post(`course/${courseId}/post_review`,true,newReview);
-    }
+
 }

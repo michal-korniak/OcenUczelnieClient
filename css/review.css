@@ -6,7 +6,17 @@
 
 .stars
 {
-    margin: 20px 0;
+    margin: 10px 0;
     font-size: 24px;
     color: #d17581;
+}
+
+.thumbs.thumbs-approved>[class*="glyphicon-thumbs-up"]
+{
+    color: #5CB85C;
+
+}
+.thumbs.thumbs-disapproved>[class*="glyphicon-thumbs-down"]
+{
+    color: #5CB85C;
 }

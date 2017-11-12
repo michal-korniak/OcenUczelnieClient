@@ -6,7 +6,7 @@
             <img src="../../../images/${model.university.imagePath}">
         </div>
         <div class="post-content text-center">
-            <h1>${courseModel.name}</h1>
+            <h1>${model.name}</h1>
             <br>
             <h4>
                 <strong>${model.university.name}: ${model.department}</strong>
@@ -47,8 +47,13 @@
                 <strong>${review.user.name}</strong>
             </div>
             <div class="pull-right">
-                <span style="font-size:1.5em;" class="glyphicon glyphicon-thumbs-down"></span>
-                <span style="font-size:1.5em;" class="glyphicon glyphicon-thumbs-up"></span>
+                <span id="thumbs-${review.id}" class="thumbs" if.bind="identityService.isUserLogged()">
+                    <span style="font-size:1.5em;" click.delegate="disapproveReview(review.id, $index)" class="glyphicon glyphicon-thumbs-down"></span>
+                    <span style="font-size:1.5em;" click.delegate="approveReview(review.id, $index)" class="glyphicon glyphicon-thumbs-up"></span>
+                </span>
+                <span style="font-size:1.2em; margin-left:10px">
+                    <strong>${review.points}</strong>
+                </span>
             </div>
             <div class="clearfix"></div>
             <br>
