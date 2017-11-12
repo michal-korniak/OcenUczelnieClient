@@ -4,7 +4,7 @@ import { HttpClient } from "aurelia-fetch-client";
 import { AuthService } from "../../core/auth-service";
 import { NewReviewModel } from "../models/new-review-model";
 
-@autoinject
+@autoinject()
 export class ReviewService extends DataService
 {
     constructor(httpClient: HttpClient, authService:AuthService) {
@@ -34,5 +34,9 @@ export class ReviewService extends DataService
     async getUserMarkToReview(reviewId: string):Promise<number>
     {
         return await super.get<number>(`review/${reviewId}/mark`,true);
+    }
+    async deleteReview(reviewId: string)
+    {
+        await super.delete(`review/${reviewId}/delete`,true);
     }
 }

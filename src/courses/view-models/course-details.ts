@@ -25,61 +25,96 @@ export class CourseDetails {
         this.newReview.rating = parseInt($('input#ratings-hidden').val());
     }
     postReview() {
-        this.checkIfUserIsStillLogged();
+        if (!this.checkIfUserIsStillLogged())
+            return;
         this.updateNewReviewRating();
-        this.reviewService.postReview(this.model.id, this.newReview);
-        
-    }
-    async approveReview(id: string, index: number) {
-        this.checkIfUserIsStillLogged();
-        let priorMark: number = await this.reviewService.getUserMarkToReview(id);
-        if (priorMark == 1) {
-            await this.reviewService.deleteApproveFromReview(id);
-            this.model.reviews[index].points -= 1;
-            this.updateThumbsClass(id);
+        if (this.newReview.content == null || this.newReview.content.length < 20) {
+            this.toastr.warning("Najpierw uzupełnij swoją opinie (min. 20 znaków)");
             return;
         }
-        await this.reviewService.approveReview(id);
-        this.model.reviews[index].points += 1;
-        if (priorMark == -1)
+        if (isNaN(this.newReview.rating)) {
+            this.toastr.warning('Najpierw zaznacz ocene.');
+            return;
+        }
+        this.reviewService.postReview(this.model.id, this.newReview);
+        window.location.reload(true);
+
+    }
+    async approveReview(id: string, index: number) {
+        try {
+            if (!this.checkIfUserIsStillLogged())
+                return;
+            let priorMark: number = await this.reviewService.getUserMarkToReview(id);
+            if (priorMark == 1) {
+                await this.reviewService.deleteApproveFromReview(id);
+                this.model.reviews[index].points -= 1;
+                this.updateOpinionClass(id);
+                return;
+            }
+            await this.reviewService.approveReview(id);
             this.model.reviews[index].points += 1;
-        this.updateThumbsClass(id);
+            if (priorMark == -1)
+                this.model.reviews[index].points += 1;
+            this.updateOpinionClass(id);
+        }
+        catch (err) {
+            this.toastr.warning("Nie możesz plusować swojej recenzji.");
+        }
 
     }
     async disapproveReview(id: string, index: number) {
-        this.checkIfUserIsStillLogged()
-        let priorMark: number = await this.reviewService.getUserMarkToReview(id);
-        if (priorMark == -1) {
-            await this.reviewService.deleteDisapproveFromReview(id);
-            this.model.reviews[index].points += 1;
-            this.updateThumbsClass(id);
-            return;
-        }
-        await this.reviewService.disapproveReview(id);
-        this.model.reviews[index].points -= 1;
-        if (priorMark == 1)
+        try {
+            if (!this.checkIfUserIsStillLogged())
+                return;
+            let priorMark: number = await this.reviewService.getUserMarkToReview(id);
+            if (priorMark == -1) {
+                await this.reviewService.deleteDisapproveFromReview(id);
+                this.model.reviews[index].points += 1;
+                this.updateOpinionClass(id);
+                return;
+            }
+            await this.reviewService.disapproveReview(id);
             this.model.reviews[index].points -= 1;
-        this.updateThumbsClass(id);
-    }
-    async updateThumbsClass(reviewId: string) {
-        let userMark: number = await this.reviewService.getUserMarkToReview(reviewId);
-        let d = document.getElementById(`thumbs-${reviewId}`);
-        if (userMark == 1)
-            d.className = "thumbs thumbs-approved";
-        else if (userMark == -1)
-            d.className = "thumbs thumbs-disapproved";
-        else
-            d.className = "thumbs";
-    }
-    checkIfUserIsStillLogged()
-    {
-        if(!this.identityService.isUserLogged())
-        {
-            this.toastr.warning("Twoja sesja wygasla.");
-            window.location.reload(true);
+            if (priorMark == 1)
+                this.model.reviews[index].points -= 1;
+            this.updateOpinionClass(id);
+        }
+        catch (err) {
+            this.toastr.warning("Nie możesz minusować swojej recenzji.");
         }
     }
 
+    checkIfUserIsStillLogged(): boolean {
+        if (!this.identityService.isUserLogged()) {
+            this.toastr.warning("Twoja sesja wygasla. Zaloguj się ponownie.");
+            return false;
+        }
+        return true;
+    }
+    async showRemoveButtonIfUserIsAuthor(review: ReviewModel) {
+        let currentUser = await this.identityService.getIdentityModel();
+        if (currentUser != null && review.user.id == currentUser.id) {
+            let d = document.getElementById(`remove-review-${review.id}`);
+            d.style.visibility = "visible";
+        }
+
+
+    }
+    async updateOpinionClass(reviewId: string) {
+        let userMark: number = await this.reviewService.getUserMarkToReview(reviewId);
+        let d = document.getElementById(`opinion-${reviewId}`);
+        if (userMark == 1)
+            d.className = "opinion opinion-approved";
+        else if (userMark == -1)
+            d.className = "opinion opinion-disapproved";
+        else
+            d.className = "opinion";
+    }
+    async deleteReview(reviewId: string)
+    {
+        await this.reviewService.deleteReview(reviewId);
+        window.location.reload(true);
+    }
 
 
 
@@ -124,7 +159,8 @@ export class CourseDetails {
         });
 
         for (let i = 0; i < this.model.reviews.length; ++i) {
-            this.updateThumbsClass(this.model.reviews[i].id);
+            this.updateOpinionClass(this.model.reviews[i].id);
+            this.showRemoveButtonIfUserIsAuthor(this.model.reviews[i]);
         }
     }
 

@@ -25,7 +25,7 @@
                     <div class="col-md-12">
                         <form accept-charset="UTF-8" action="" method="post"></form>
                         <input id="ratings-hidden" value.bind="newReview.rating" name="rating" type="hidden">
-                        <textarea class="form-control animated" value.bind="newReview.content" cols="50" id="new-review" name="comment" placeholder="Opisz swoje doświadczenia z tym kierunkiem..."
+                        <textarea class="form-control animated" value.bind="newReview.content" cols="50" id="new-review" name="comment" placeholder="Opisz swoje doświadczenia z tym kierunkiem (min. 20 znaków)."
                             rows="5"></textarea>
 
                         <div class="text-right">
@@ -43,25 +43,29 @@
     <div id="reviews" class="container">
         <div class="row" style="margin-top:50px;"></div>
         <div class="well well-sm" repeat.for="review of model.reviews">
-            <div class="pull-left">
-                <strong>${review.user.name}</strong>
-            </div>
-            <div class="pull-right">
-                <span id="thumbs-${review.id}" class="thumbs" if.bind="identityService.isUserLogged()">
-                    <span style="font-size:1.5em;" click.delegate="disapproveReview(review.id, $index)" class="glyphicon glyphicon-thumbs-down"></span>
-                    <span style="font-size:1.5em;" click.delegate="approveReview(review.id, $index)" class="glyphicon glyphicon-thumbs-up"></span>
-                </span>
-                <span style="font-size:1.2em; margin-left:10px">
-                    <strong>${review.points}</strong>
-                </span>
-            </div>
-            <div class="clearfix"></div>
-            <br>
-            <p>${review.content}</p>
-
-            <div class="text-right">
-                <div class="stars starrr static-starrr" data-rating="${review.rating}">
+            <div class="review">
+                <div class="pull-left author">
+                    <strong>${review.user.name}</strong>
                 </div>
+                <div class="pull-right">
+                    <span id="opinion-${review.id}" class="opinion" if.bind="identityService.isUserLogged()">
+                        <span style="font-size:1.5em;" click.delegate="disapproveReview(review.id, $index)" class="glyphicon glyphicon-minus"></span>
+                        <span style="font-size:1.5em;" click.delegate="approveReview(review.id, $index)" class="glyphicon glyphicon-plus"></span>
+                    </span>
+                    <span style="font-size:1.2em; margin-left:10px">
+                        <strong>${review.points}</strong>
+                    </span>
+                </div>
+                <div class="clearfix"></div>
+                <br>
+                <p>${review.content}</p>
+                <div class="pull-left" style="margin-top:10px">
+                    <button class="btn btn-warning btn-xs" id="remove-review-${review.id}" click.delegate="deleteReview(review.id)" style="visibility: hidden; margin-top:7px; margin-left:-3px">Usuń</button>
+                </div>
+                <div class="pull-right" style="margin-top:13px">
+                    <span class="stars starrr static-starrr" data-rating="${review.rating}"></span>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>

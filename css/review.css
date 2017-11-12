@@ -6,17 +6,32 @@
 
 .stars
 {
-    margin: 10px 0;
-    font-size: 24px;
+    margin:20px 0;
+    font-size: 23px;
     color: #d17581;
 }
-
-.thumbs.thumbs-approved>[class*="glyphicon-thumbs-up"]
+.review
 {
-    color: #5CB85C;
+    margin: 10px;
+}
+.opinion.opinion-approved>[class*="glyphicon-plus"]
+{
+    color: #d17581;
 
 }
-.thumbs.thumbs-disapproved>[class*="glyphicon-thumbs-down"]
+.opinion.opinion-disapproved>[class*="glyphicon-minus"]
 {
-    color: #5CB85C;
+    color: #d17581;
+}
+.btn.btn-remove
+{
+    margin-left:-4px;
+    background-color: #d17581 !important;
+    color: #fff !important;
+}
+.author
+{
+    color: #5b0000;
+    font-weight: bold;
+    font-size: 16px;
 }
