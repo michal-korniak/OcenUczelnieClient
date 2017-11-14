@@ -97,7 +97,8 @@
               "build/toastr.min.css"
             ],
             "deps": ["jquery"]
-          }
+          },
+          { "name": "moment", "path": "../node_modules/moment", "main": "moment" }
         ]
       }
     ],

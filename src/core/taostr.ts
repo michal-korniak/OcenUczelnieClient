@@ -22,6 +22,7 @@ export class Toastr {
         return {
             positionClass: 'toast-top-center',
             closeButton: true,
+            preventDuplicates:true
         };
     }
 }

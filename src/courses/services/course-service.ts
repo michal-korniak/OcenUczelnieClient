@@ -12,7 +12,7 @@ export class CourseService extends DataService
     }
     async getDetails(courseId: string): Promise<CourseModel>
     {
-        return await super.get<CourseModel>(`course/${courseId}/details`,false)
+        return await super.get<CourseModel>(`course/${courseId}`,false)
     }
 
 }

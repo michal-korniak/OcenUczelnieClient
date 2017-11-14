@@ -6,5 +6,6 @@ export class ReviewModel
     rating: number;
     content: string;
     points: number;
+    createdAt: Date;
     user: UserModel;
 }

@@ -25,13 +25,14 @@
 }
 .btn.btn-remove
 {
-    margin-left:-4px;
-    background-color: #d17581 !important;
+    margin-top:7px;
+    margin-left:-3px;
+    background-color: #514e59 !important;
     color: #fff !important;
 }
 .author
 {
-    color: #5b0000;
+    color: #020a7e;
     font-weight: bold;
     font-size: 16px;
 }

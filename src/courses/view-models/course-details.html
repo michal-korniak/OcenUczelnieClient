@@ -1,6 +1,7 @@
 <template>
     <link rel="stylesheet" type="text/css" href="../css/post-container.css">
     <link rel="stylesheet" type="text/css" href="../css/review.css">
+    <require from="../../resources/value-converters/date-time-format"></require>
     <div class="post-container">
         <div class="post-thumb">
             <img src="../../../images/${model.university.imagePath}">
@@ -44,8 +45,9 @@
         <div class="row" style="margin-top:50px;"></div>
         <div class="well well-sm" repeat.for="review of model.reviews">
             <div class="review">
-                <div class="pull-left author">
-                    <strong>${review.user.name}</strong>
+                <div class="pull-left">
+                    <span class="author">${review.user.name}</span>
+                    <strong style="margin-left:5px">${review.createdAt | dateTimeFormat}</strong>
                 </div>
                 <div class="pull-right">
                     <span id="opinion-${review.id}" class="opinion" if.bind="identityService.isUserLogged()">
@@ -60,7 +62,7 @@
                 <br>
                 <p>${review.content}</p>
                 <div class="pull-left" style="margin-top:10px">
-                    <button class="btn btn-warning btn-xs" id="remove-review-${review.id}" click.delegate="deleteReview(review.id)" style="visibility: hidden; margin-top:7px; margin-left:-3px">Usuń</button>
+                    <button class="btn btn-remove btn-xs" id="remove-review-${review.id}" click.delegate="deleteReview(review.id)" style="visibility: hidden;">Usuń recenzje</button>
                 </div>
                 <div class="pull-right" style="margin-top:13px">
                     <span class="stars starrr static-starrr" data-rating="${review.rating}"></span>

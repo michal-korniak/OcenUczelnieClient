@@ -24,7 +24,7 @@ export class CourseDetails {
     updateNewReviewRating() {
         this.newReview.rating = parseInt($('input#ratings-hidden').val());
     }
-    postReview() {
+    async postReview() {
         if (!this.checkIfUserIsStillLogged())
             return;
         this.updateNewReviewRating();
@@ -36,7 +36,7 @@ export class CourseDetails {
             this.toastr.warning('Najpierw zaznacz ocene.');
             return;
         }
-        this.reviewService.postReview(this.model.id, this.newReview);
+        await this.reviewService.postReview(this.model.id, this.newReview);
         window.location.reload(true);
 
     }
@@ -44,9 +44,9 @@ export class CourseDetails {
         try {
             if (!this.checkIfUserIsStillLogged())
                 return;
-            let priorMark: number = await this.reviewService.getUserMarkToReview(id);
+            let priorMark: number = await this.reviewService.getUserOpinionToReview(id);
             if (priorMark == 1) {
-                await this.reviewService.deleteApproveFromReview(id);
+                await this.reviewService.removeApprove(id);
                 this.model.reviews[index].points -= 1;
                 this.updateOpinionClass(id);
                 return;
@@ -66,9 +66,9 @@ export class CourseDetails {
         try {
             if (!this.checkIfUserIsStillLogged())
                 return;
-            let priorMark: number = await this.reviewService.getUserMarkToReview(id);
+            let priorMark: number = await this.reviewService.getUserOpinionToReview(id);
             if (priorMark == -1) {
-                await this.reviewService.deleteDisapproveFromReview(id);
+                await this.reviewService.deleteDisapprove(id);
                 this.model.reviews[index].points += 1;
                 this.updateOpinionClass(id);
                 return;
@@ -83,7 +83,6 @@ export class CourseDetails {
             this.toastr.warning("Nie możesz minusować swojej recenzji.");
         }
     }
-
     checkIfUserIsStillLogged(): boolean {
         if (!this.identityService.isUserLogged()) {
             this.toastr.warning("Twoja sesja wygasla. Zaloguj się ponownie.");
@@ -101,7 +100,7 @@ export class CourseDetails {
 
     }
     async updateOpinionClass(reviewId: string) {
-        let userMark: number = await this.reviewService.getUserMarkToReview(reviewId);
+        let userMark: number = await this.reviewService.getUserOpinionToReview(reviewId);
         let d = document.getElementById(`opinion-${reviewId}`);
         if (userMark == 1)
             d.className = "opinion opinion-approved";
@@ -158,9 +157,12 @@ export class CourseDetails {
             });
         });
 
-        for (let i = 0; i < this.model.reviews.length; ++i) {
-            this.updateOpinionClass(this.model.reviews[i].id);
-            this.showRemoveButtonIfUserIsAuthor(this.model.reviews[i]);
+        if(this.identityService.isUserLogged())
+        {
+            for (let i = 0; i < this.model.reviews.length; ++i) {
+                this.updateOpinionClass(this.model.reviews[i].id);
+                this.showRemoveButtonIfUserIsAuthor(this.model.reviews[i]);
+            }
         }
     }
 
