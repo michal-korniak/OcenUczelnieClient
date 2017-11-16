@@ -24,15 +24,16 @@ export class RegisterUser {
     async register() {
         console.log(this.model);
         try {
-            await this.userService.registerUser(this.model);
+            var user=await this.userService.registerUser(this.model);
         }
         catch (ex) {
             let error: Error = ex;
             this.toastr.error(error.message);
             return;
         }
-        this.toastr.success("Zarejestrowano!");
-        this.router.navigate("#/user/login");
+        this.toastr.success("Na podany adres został wysłany kod aktywacyjny.");
+        this.userService.generateConfirmToken(user.id);
+        this.router.navigate(`#/user/activate/${user.id}`);
 
 
     }

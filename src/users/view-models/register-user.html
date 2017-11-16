@@ -2,7 +2,7 @@
     <div class="page-header text-center">
         <h1>Rejestracja</h1>
     </div>
-    <div validation-errors.bind="errors">
+    <div validation-errors.bind="errors" class="col-md-6 col-md-offset-3">
         <div class="alert alert-danger" if.bind="validationController.errors.length>0">
             <ul>
                 <li repeat.for="error of validationController.errors">
@@ -13,22 +13,24 @@
         <form>
             <div class="form-group">
                 <label for="register-user-email">Email</label>
-                <input type="email" value.bind="model.email & validate" class="form-control" id="register-user-email" placeholder="Email">
+                <input type="email" value.bind="model.email & validate" class="form-control input-lg" id="register-user-email" placeholder="Email">
             </div>
             <div class="form-group">
                 <label for="register-user-name">Nazwa</label>
-                <input type="text" value.bind="model.name & validate" class="form-control" id="register-user-name" placeholder="Nazwa">
+                <input type="text" value.bind="model.name & validate" class="form-control input-lg" id="register-user-name" placeholder="Nazwa">
             </div>
             <div class="form-group">
                 <label for="register-user-password">Hasło</label>
-                <input type="password" value.bind="model.password & validate" class="form-control" id="register-user-password" placeholder="Hasło">
+                <input type="password" value.bind="model.password & validate" class="form-control input-lg" id="register-user-password" placeholder="Hasło">
             </div>
             <div class="form-group">
                 <label for="register-user-confirm-password">Potwierdź Hasło</label>
-                <input type="password" value.bind="model.confirmPassword & validate" class="form-control" id="register-user-confirm-password"
+                <input type="password" value.bind="model.confirmPassword & validate" class="form-control input-lg" id="register-user-confirm-password"
                     placeholder="Potwierdź Hasło">
             </div>
-            <button type="submit" disabled.bind="validationController.errors.length>0" click.delegate="register()" class="btn btn-primary">Rejestruj</button>
+            <div class="text-center">
+                <button type="submit" disabled.bind="validationController.errors.length>0" click.delegate="register()" class="btn btn-primary btn-lg">Rejestruj</button>
+            </div>
         </form>
     </div>
 </template>

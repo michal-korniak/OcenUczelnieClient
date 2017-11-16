@@ -1,7 +1,22 @@
 <template>
   <require from="bootstrap/css/bootstrap.css"></require>
   <require from="toastr/build/toastr.min.css"></require>
-  <compose view-model="./components/navbar" model.bind="identityService"></compose>
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">OcenUczelnie!</a>
+        </div>
+        <div class="navbar-right">
+          <div if.bind="!identityService.isUserLogged()">
+            <a class="navbar-brand" href="#/user/register">Rejestracja</a>
+            <a class="navbar-brand" href="#/user/login">Logowanie</a>
+          </div>
+          <div if.bind="identityService.isUserLogged()">
+              <a class="navbar-brand" href="#/user/logout">Wyloguj</a>
+          </div>
+        </div>
+      </div>                             
+    </nav>
   <div class="container">
     <router-view></router-view>
   </div>

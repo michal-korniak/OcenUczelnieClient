@@ -18,14 +18,14 @@
         <br>
         <div class="row">
     
-            <div class="col-md-4" repeat.for="univer of filterUniversites">
+            <div class="col-md-4 col-sm-6 col-xs-6" repeat.for="univer of filterUniversites">
                 <a href="${this.router.baseUrl}/#/university/${univer.id}">
                     <div class="thumbnail">
-                        <div class="col-md-5">
+                        <div class="col-lg-5 col-sm-6">
                             <img src="../images/${univer.imagePath}">
                         </div>
-                        <div class="col-md-7">
-                            <h4>${univer.name}</h4>
+                        <div class="col-lg-7 col-sm-6">
+                            <strong>${univer.name}</strong>
                             <p></p>
                             <p>${univer.place}</p>
                             <p></p>

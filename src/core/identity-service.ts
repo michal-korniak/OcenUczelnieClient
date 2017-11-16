@@ -20,7 +20,7 @@ export class IdentityService extends DataService {
     }
     public async reloadIdentityModel() {
         try {
-            this.identityModel = await super.get<IdentityModel>("user/details", true);
+            this.identityModel = await super.get<IdentityModel>("user/current_user", true);
         }
         catch (ex) {
             this.identityModel = null;

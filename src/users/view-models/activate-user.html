@@ -1,0 +1,16 @@
+<template>
+    <div class="page-header text-center">
+        <h1>Aktywacja konta</h1>
+    </div>
+    <br>
+    <div class="col-md-4 col-md-offset-4">
+        <div class="form-group text-center">
+            <label for="confirm-token">Wpisz swój kod aktywacyjny</label>
+            <input type="text" value.bind="token" class="form-control input-lg" id="confirm-token">
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary btn-lg" click.delegate="validate()">Aktywuj</button>
+            <button class="btn btn-warning btn-lg" click.delegate="generateNewToken()">Wyślij nowy kod</button>
+        </div>
+    </div>
+</template>

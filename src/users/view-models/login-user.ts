@@ -28,6 +28,13 @@ export class LoginUser {
         }
         catch (ex) {
             let error: Error = ex;
+            if(error.message="User is not activated.")
+            {
+                this.toastr.info("Przed zalogwaniem musisz aktywować swoje konto.");
+                let user=await this.userService.getUserDetailsByEmail(this.model.email);
+                this.router.navigate(`#/user/activate/${user.id}`);
+                return;
+            }
             this.toastr.error(error.message);
             return;
         }

@@ -1,6 +1,5 @@
 .row{
     margin-top:25spx;
-    margin-left:25px;
 }
 
 div.thumbnail{
@@ -15,3 +14,4 @@ div.thumbnail div{
 div.thumbnail div:last-child{
     margin-top: 25px;
 }
+
