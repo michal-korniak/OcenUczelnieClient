@@ -5,6 +5,7 @@ import { RegisterUserValidator } from "../validators/register-user-validator";
 import { UserService } from "../services/user-service";
 import { Router } from 'aurelia-router';
 import { Toastr } from "../../core/taostr";
+import { ApiError } from "../../core/models/api-error";
 
 @autoinject()
 export class RegisterUser {
@@ -27,8 +28,11 @@ export class RegisterUser {
             var user=await this.userService.registerUser(this.model);
         }
         catch (ex) {
-            let error: Error = ex;
-            this.toastr.error(error.message);
+            let error: ApiError = ex;
+            if(error.code=='email_occupied')
+                this.toastr.error("Użytkownik z podanym adresem email już istnieje.");
+            else if(error.code=='name_occupied')
+            this.toastr.error("Użytkownik z podaną nazwą już istnieje.");
             return;
         }
         this.toastr.success("Na podany adres został wysłany kod aktywacyjny.");

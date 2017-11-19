@@ -9,6 +9,7 @@ import { IdentityService } from "../../core/identity-service";
 import { IdentityModel } from "../../core/models/identity-model";
 import { Router } from "aurelia-router";
 import { AuthModel } from "../../core/models/auth-model";
+import { ApiError } from "../../core/models/api-error";
 
 @autoinject()
 export class LoginUser {
@@ -27,15 +28,16 @@ export class LoginUser {
             authModel = await this.userService.loginUser(this.model);
         }
         catch (ex) {
-            let error: Error = ex;
-            if(error.message="User is not activated.")
+            let error: ApiError = ex;
+            if(error.code=="not_activated")
             {
                 this.toastr.info("Przed zalogwaniem musisz aktywować swoje konto.");
                 let user=await this.userService.getUserDetailsByEmail(this.model.email);
                 this.router.navigate(`#/user/activate/${user.id}`);
                 return;
             }
-            this.toastr.error(error.message);
+            else if(error.code=="invalid_credentials")
+                this.toastr.error("Nieprawidłowe dane logowania.");
             return;
         }
         await this.authService.setToken(authModel);

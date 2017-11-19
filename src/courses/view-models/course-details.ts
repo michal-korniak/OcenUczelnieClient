@@ -8,6 +8,7 @@ import { NewReviewModel } from "../../reviews/models/new-review-model";
 import { IdentityService } from "../../core/identity-service";
 import { ReviewService } from "../../reviews/services/review-service";
 import { Toastr } from "../../core/taostr";
+import { ApiError } from "../../core/models/api-error";
 
 @autoinject()
 export class CourseDetails {
@@ -58,9 +59,12 @@ export class CourseDetails {
             this.updateOpinionClass(id);
         }
         catch (err) {
-            this.toastr.warning("Nie możesz plusować swojej recenzji.");
+            let error: ApiError=err;
+            if(error.code='invalid_action')
+            {
+                this.toastr.warning("Nie możesz plusować swojej recenzji.");
+            }   
         }
-
     }
     async disapproveReview(id: string, index: number) {
         try {
@@ -80,7 +84,11 @@ export class CourseDetails {
             this.updateOpinionClass(id);
         }
         catch (err) {
-            this.toastr.warning("Nie możesz minusować swojej recenzji.");
+            let error: ApiError=err;
+            if(error.code='invalid_action')
+            {
+                this.toastr.warning("Nie możesz minusować swojej recenzji.");
+            }   
         }
     }
     checkIfUserIsStillLogged(): boolean {

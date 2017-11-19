@@ -1,17 +1,11 @@
-.row{
-    margin-top:25spx;
-}
-
 div.thumbnail{
     display: inline-flex;
 }
 
-div.thumbnail div{
-    float: left;
-    margin: 4%;
-}
+.thumbnail p, .thumbnail h4 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 
-div.thumbnail div:last-child{
-    margin-top: 25px;
-}
 

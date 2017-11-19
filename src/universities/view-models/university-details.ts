@@ -36,7 +36,7 @@ export class UniversityDetails {
     setDepartmentColors() {
         for (let i = 0; i < this.model.departments.length; ++i) {
             let departmentName: string = this.model.departments[i];
-            let modulo: number = i % 17;
+            let modulo: number = i % 15;
             if (modulo == 0)
                 this.colors.set(departmentName, new DepartmentColors('btn-success', 'successColor'));
             else if (modulo == 1)

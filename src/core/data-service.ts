@@ -1,5 +1,6 @@
 import { HttpClient, json } from 'aurelia-fetch-client'
 import { AuthService } from './auth-service';
+import { ApiError } from './models/api-error';
 
 export abstract class DataService {
     constructor(private httpClient: HttpClient, protected authService: AuthService) {
@@ -24,10 +25,7 @@ export abstract class DataService {
             requestInit.body = json(body);
         if (isSecured)
         {
-            requestInit.headers =
-            {
-                'Authorization': `Bearer ${this.authService.getToken()}`
-            };
+            requestInit.headers =new Headers({'Authorization': `Bearer ${this.authService.getToken()}`});
         }
 
         let response = await this.httpClient.fetch(path, requestInit);
@@ -42,12 +40,8 @@ export abstract class DataService {
             hasMessage = false;
         }
         if (!response.ok && hasMessage) {
-            throw Error(jsonResult.error);
+            throw new ApiError(jsonResult.code, jsonResult.message);
         }
         return jsonResult;
-    }
-    private configureHeaders(): any
-    {
-
     }
 }
