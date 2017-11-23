@@ -75,12 +75,16 @@
           "text",
           "jquery",
           {
-            "name":"bootstrap",
-            "path":"../node_modules/bootstrap/dist",
+            "name": "bootstrap",
+            "path": "../node_modules/bootstrap/dist",
             "main": "js/boostrap.min",
-            "deps": ["jquery"],
-            "exports":"$",
-            "resources":["css/bootstrap.css"]
+            "deps": [
+              "jquery"
+            ],
+            "exports": "$",
+            "resources": [
+              "css/bootstrap.css"
+            ]
           },
           {
             "name": "aurelia-validation",
@@ -96,9 +100,24 @@
             "resources": [
               "build/toastr.min.css"
             ],
-            "deps": ["jquery"]
+            "deps": [
+              "jquery"
+            ]
           },
-          { "name": "moment", "path": "../node_modules/moment", "main": "moment" }
+          {
+            "name": "moment",
+            "path": "../node_modules/moment",
+            "main": "moment"
+          },
+          {
+            "name":"splash-screen",
+            "path": "../node_modules/splash-screen/dist",
+            "main": "/splash-screen.min.js",
+            "resources": [
+              "splash-screen.min.css",
+              "splash-screen-tailing.min.css"
+            ]
+          }
         ]
       }
     ],
@@ -161,5 +180,69 @@
     "attributes": "resources/attributes",
     "valueConverters": "resources/value-converters",
     "bindingBehaviors": "resources/binding-behaviors"
+  },
+  "publish": {
+    "dev": {
+      "dest": {
+        "type": "local",
+        "root": "./wwwroot"
+      },
+      "assets": [
+        {
+          "src": "./css/*.css",
+          "dest": ""
+        },
+        {
+          "src": "./images/*",
+          "dest": ""
+        },
+        {
+          "src": "./scripts/*.js",
+          "dest": "scripts"
+        },
+        {
+          "src": "./index.html",
+          "dest": ""
+        },
+        {
+          "src": "./assets/**/*",
+          "dest": "assets"
+        }
+      ]
+    },
+    "prod": {
+      "dest": {
+        "type": "ftp",
+        "root": "./site/wwwroot",
+        "host": "waws-prod-am2-155.ftp.azurewebsites.windows.net",
+        "port": 21
+      },
+      "assets": [
+        {
+          "src": "./css/*.css",
+          "dest": ""
+        },
+        {
+          "src": "./images/*.png",
+          "dest": ""
+        },
+        {
+          "src": "./bootstrap/fonts/*",
+          "dest": ""
+        },
+        {
+          "src": "./scripts/*.js",
+          "dest": ""
+        },
+        {
+          "src": "./index.html",
+          "dest": ""
+        },
+        {
+          "src": "./assets/**/*",
+          "dest": ""
+        }
+      ]
+    }
   }
 }

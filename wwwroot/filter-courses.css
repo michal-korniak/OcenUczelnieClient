@@ -1,0 +1,128 @@
+/*    --------------------------------------------------
+	:: General
+	-------------------------------------------------- */
+    body {
+        font-family: 'Open Sans', sans-serif;
+        color: #353535;
+    }
+    .content h1 {
+        text-align: center;
+    }
+    .content .content-footer p {
+        color: #6d6d6d;
+        font-size: 12px;
+        text-align: center;
+    }
+    .content .content-footer p a {
+        color: inherit;
+        font-weight: bold;
+    }
+    
+    /*	--------------------------------------------------
+        :: Table Filter
+        -------------------------------------------------- */
+    .panel {
+        border: 1px solid #ddd;
+        background-color: #fcfcfc;
+    }
+    .panel .btn-group {
+        margin: 10px 0 10px;
+    }
+    .panel .btn-group .btn {
+        transition: background-color .3s ease;
+    }
+    .table-filter {
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+    }
+    .table-filter tbody tr:hover {
+        cursor: pointer;
+        background-color: #eee;
+    }
+    .table-filter tbody tr td {
+        padding: 10px;
+        vertical-align: middle;
+        border-top-color: #eee;
+    }
+    .table-filter tbody tr.selected td {
+        background-color: #eee;
+    }
+    .table-filter tr td:first-child {
+        width: 38px;
+    }
+    .table-filter tr td:nth-child(2) {
+        width: 35px;
+    }
+
+    .table-filter .media-meta {
+        font-size: 11px;
+        color: #999;
+    }
+    .table-filter .media .title {
+        color: #2BBCDE;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: normal;
+        margin: 0;
+    }
+    .table-filter .media .title span {
+        font-size: .8em;
+        margin-right: 20px;
+    }
+    .table-filter .media .title span.successColor {
+        color: #5cb85c;
+    }
+    .table-filter .media .title span.warningColor {
+        color: #f0ad4e;
+    }
+    .table-filter .media .title span.dangerColor {
+        color: #d9534f;
+    }
+    .table-filter .media .title span.primaryColor {
+        color: #337ab7;
+    }
+    .table-filter .media .title span.infoColor {
+        color: #5bc0de;
+    }
+
+    .table-filter .media .title span.redColor {
+        color: hsl(0, 86%, 30%);
+    }
+    .table-filter .media .title span.brownColor {
+        color: hsl(27, 86%, 30%);
+    }
+    .table-filter .media .title span.orangeColor {
+        color: hsl(48, 86%, 30%);
+    }
+    .table-filter .media .title span.lightgreenColor {
+        color: hsl(64, 86%, 30%);
+    }
+    .table-filter .media .title span.greenColor {
+        color: hsl(84, 86%, 30%);
+    }
+    .table-filter .media .title span.darkblueColor {
+        color: hsl(225, 100%, 14%);
+    }
+    .table-filter .media .title span.violetColor {
+        color: hsl(299, 100%, 14%);
+    }
+    .table-filter .media .title span.darkbrownColor {
+        color: hsl(349, 17%, 8%);
+    }
+    .table-filter .media .title span.yellowColor {
+        color: hsl(62, 100%, 27%);
+    }
+    .table-filter .media .title span.grayColor {
+        color: hsl(195, 0%, 35%);
+    }
+    .table-filter .media .title span.pinkColor {
+        color: hsl(312, 80%, 43%);
+    }
+    .table-filter .media .title span.blueColor {
+        color: hsl(195, 60%, 35%);
+    }
+
+
+    .table-filter .media .summary {
+        font-size: 14px;
+    }

@@ -2,11 +2,12 @@ import { RouterConfiguration, RouteConfig, activationStrategy } from "aurelia-ro
 import { AuthorizeStep } from "./core/authorize-step";
 import { IdentityService } from "./core/identity-service";
 import { autoinject } from "aurelia-dependency-injection";
+import { enable, destroy } from 'splash-screen';
 
 @autoinject()
 export class App {
   constructor(private identityService: IdentityService) {
-    console.log(this.identityService)
+    enable('tailing');
   }
 
   configureRouter(config: RouterConfiguration) {
@@ -18,5 +19,9 @@ export class App {
       { route: 'university', moduleId: "./universities/config/route-config" },
       { route: 'course', moduleId: "./courses/config/route-config" }
     ]);
+  }
+  attached()
+  {
+    destroy();
   }
 }

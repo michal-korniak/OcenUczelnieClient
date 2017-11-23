@@ -1,0 +1,38 @@
+.animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+.stars
+{
+    margin:20px 0;
+    font-size: 23px;
+    color: #d17581;
+}
+.review
+{
+    margin: 10px;
+}
+.opinion.opinion-approved>[class*="glyphicon-plus"]
+{
+    color: #d17581;
+
+}
+.opinion.opinion-disapproved>[class*="glyphicon-minus"]
+{
+    color: #d17581;
+}
+.btn.btn-remove
+{
+    margin-top:7px;
+    margin-left:-3px;
+    background-color: #514e59 !important;
+    color: #fff !important;
+}
+.author
+{
+    color: #020a7e;
+    font-weight: bold;
+    font-size: 16px;
+}

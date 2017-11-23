@@ -1,0 +1,35 @@
+
+.frame {
+    height: 150px; /*can be anything*/
+    width: 150px; /*can be anything*/
+    display: inline-block;
+    vertical-align: top; /*not required*/
+    position: relative;
+  }
+  
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+  
+  /* everything below is not required */
+  .frame span {
+    font-family: arial, sans-serif;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    font-size: 12px;
+  }

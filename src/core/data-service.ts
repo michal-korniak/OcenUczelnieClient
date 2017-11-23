@@ -4,7 +4,7 @@ import { ApiError } from './models/api-error';
 
 export abstract class DataService {
     constructor(private httpClient: HttpClient, protected authService: AuthService) {
-        httpClient.configure(c => c.withBaseUrl('http://localhost:5000/'));
+        httpClient.configure(c => c.withBaseUrl('http://ocenuczelnieapi.azurewebsites.net/'));
     }
     protected async get<TResult>(path: string, isSecured: boolean = false): Promise<TResult> {
         return this.createRequest<TResult>(path, 'GET', isSecured);
