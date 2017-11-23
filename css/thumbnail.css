@@ -1,11 +1,19 @@
 div.thumbnail{
     display: inline-flex;
 }
-
 .thumbnail p, .thumbnail h4 {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
 
-
+  @media only screen and (max-width: 550px) {
+    .thumbnail>[class*="caption"]
+    {
+        display:none
+    }
+    .frame
+    {
+        width: 120px;
+    }
+}

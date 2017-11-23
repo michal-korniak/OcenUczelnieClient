@@ -17,4 +17,12 @@
     font-weight: bold;
     font-size: 200%
 }
-
+@media only screen and (max-width: 550px) {
+    .post-thumb
+    {
+        display: none
+    }
+    .post-content {
+        margin-left: 0px
+    }
+}
