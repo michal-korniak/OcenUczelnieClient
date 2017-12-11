@@ -7,7 +7,7 @@ div.thumbnail{
     overflow: hidden;
   }
 
-  @media only screen and (max-width: 550px) {
+  @media only screen and (max-width: 650px) {
     .thumbnail>[class*="caption"]
     {
         display:none

@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="./css/review.css">
     <link rel="stylesheet" type="text/css" href="./css/image-frame.css">
     <require from="../../resources/value-converters/date-time-format"></require>
-    <div class="post-container">
+    <div class="post-container" style="margin-bottom:50px;">
         <div class="post-thumb">
             <div class="frame">
                 <img style="max-height:150px; max-width:200px" src="../../images/${model.university.imagePath}">
@@ -17,6 +17,9 @@
             </h4>
             <p>Średnia ocen: ${model.avgRating}/5 (${model.countRating})</p>
         </div>
+    </div>
+    <div class="bottom-info" style="margin-bottom:30px;" if.bind="!identityService.isUserLogged()">
+        <i><strong>Zaloguj się, aby dodać swoją recenzję.</strong></i>
     </div>
     <div id="newReview" class="container" if.bind="identityService.isUserLogged()">
         <div class="row" style="margin-top:50px; margin-right:2px; margin-left:2px">
@@ -45,7 +48,7 @@
         </div>
     </div>
     <div id="reviews" class="container">
-        <div class="row" style="margin-top:50px;"></div>
+        <div class="row"></div>
         <div class="well well-sm" repeat.for="review of model.reviews">
             <div class="review">
                 <div class="pull-left">
