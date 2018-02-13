@@ -1,41 +1,39 @@
 <template>
-        <link rel="stylesheet" type="text/css" href="../css/search-box.css">
-        <link rel="stylesheet" type="text/css" href="../css/image-frame.css">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div id="imaginary_container">
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control" value.bind="searchPhrase" placeholder="Szukaj">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </span>
-                        </div>
+    <link rel="stylesheet" type="text/css" href="../css/search-box.css">
+    <link rel="stylesheet" type="text/css" href="../css/image-frame.css">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div id="imaginary_container">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control" value.bind="searchPhrase" placeholder="Szukaj">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-        <link rel="stylesheet" type="text/css" href="../css/thumbnail.css">
-        <br>
-        <div class="row">
-    
-            <div class="col-md-4 col-sm-6 col-xs-6" repeat.for="univer of filterUniversites">
-                <a href="${this.router.baseUrl}/#/university/${univer.id}">
-                    <div class="thumbnail">
-                        <div class="col-lg-5 col-sm-6">
-                            <div class="frame">
-                            <img src="../images/${univer.imagePath}">
-                            </div>
-                        </div>
-                        <div class="caption col-lg-7 col-sm-6" style="margin-left:15px">
-                            <strong>${univer.name}</strong>
-                            <p></p>
-                            <p>${univer.place}</p>
-                            <p></p>
+    </div>
+    <link rel="stylesheet" type="text/css" href="../css/thumbnail.css">
+    <br>
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-6" repeat.for="univer of filterUniversites">
+            <a href="${this.router.baseUrl}/#/university/${univer.id}">
+                <div class="thumbnail">
+                    <div class="col-lg-5 col-sm-6">
+                        <div class="frame">
+                            <img src="https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=width:120/${univer.imagePath}">
                         </div>
                     </div>
-                </a>
-            </div>
-    
+                    <div class="caption col-lg-7 col-sm-6" style="margin-left:15px">
+                        <strong>${univer.name}</strong>
+                        <p></p>
+                        <p>${univer.place}</p>
+                        <p></p>
+                    </div>
+                </div>
+            </a>
         </div>
-    </template>
+    </div>
+</template>

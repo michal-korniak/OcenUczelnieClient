@@ -5,6 +5,7 @@ import { UniversityModel } from "../models/university-model";
 import { autoinject } from "aurelia-dependency-injection";
 import { CourseModel } from "../../courses/models/course-model";
 import { UniversityDetailsModel } from "../models/university-details-model";
+import {NewUniversityModel} from "../models/new-university-model"
 
 @autoinject()
 export class UniversityService extends DataService
@@ -20,5 +21,9 @@ export class UniversityService extends DataService
     async getDetails(universityId: string): Promise<UniversityDetailsModel>
     {
         return await super.get<UniversityDetailsModel>(`university/${universityId}`,false);
+    }
+    async addUniversity(newUniversity: NewUniversityModel)
+    {
+        await super.post('university/add_university',true,newUniversity);
     }
 }

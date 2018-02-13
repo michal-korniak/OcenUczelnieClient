@@ -17,11 +17,11 @@ export class App {
       { route: ['', 'home'], moduleId: './home', activationStrategy: activationStrategy.invokeLifecycle },
       { route: 'user', moduleId: "./users/config/route-config" },
       { route: 'university', moduleId: "./universities/config/route-config" },
-      { route: 'course', moduleId: "./courses/config/route-config" }
+      { route: 'course', moduleId: "./courses/config/route-config" },
+      { route: 'admin', moduleId: "./admin/config/route-config" }
     ]);
   }
-  attached()
-  {
+  attached() {
     destroy();
   }
 }

@@ -41,9 +41,9 @@ export class LoginUser {
             return;
         }
         await this.authService.setToken(authModel);
-        let model: IdentityModel = await this.identityService.getIdentityModel()
-        window.location.reload(true);
+        let model: IdentityModel = await this.identityService.getIdentityModel();
         this.router.navigate("#/home",{ replace: true});
+        window.location.reload(true)
 
     }
 }

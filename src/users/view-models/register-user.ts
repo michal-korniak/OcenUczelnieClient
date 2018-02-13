@@ -32,7 +32,7 @@ export class RegisterUser {
             if(error.code=='email_occupied')
                 this.toastr.error("Użytkownik z podanym adresem email już istnieje.");
             else if(error.code=='name_occupied')
-            this.toastr.error("Użytkownik z podaną nazwą już istnieje.");
+                this.toastr.error("Użytkownik z podaną nazwą już istnieje.");
             return;
         }
         this.toastr.success("Na podany adres został wysłany kod aktywacyjny.");

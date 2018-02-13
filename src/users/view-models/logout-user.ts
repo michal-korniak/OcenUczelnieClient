@@ -13,7 +13,7 @@ export class LogoutUser
     activate()
     {
         this.userService.logoutUser();
-        window.location.reload(true);
-        this.router.navigate("#/home"); 
+        this.router.navigate("#/home");
+        window.location.reload(true); 
     }
 }

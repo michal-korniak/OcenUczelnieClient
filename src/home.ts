@@ -24,7 +24,8 @@ export class Home {
         this.filterUniversites=this.universites.filter(x=>
             {
                 if(x.name.toLowerCase().includes(newValue.toLowerCase()) 
-                || x.place.toLowerCase().includes(newValue.toLowerCase()))
+                || x.place.toLowerCase().includes(newValue.toLowerCase())
+                || x.shortcut.toLowerCase().includes(newValue.toLowerCase()))
                     return x;
             });
     }
