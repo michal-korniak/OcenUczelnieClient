@@ -1,0 +1,47 @@
+<template>
+    <link rel="stylesheet" type="text/css" href="../../../css/image-preview-background.css">
+    <div class="page-header text-center">
+        <h1>Edytor uczelni</h1>
+    </div>
+    <div validation-errors.bind="errors">
+        <div class="alert alert-danger" if.bind="validationController.errors.length>0">
+            <ul>
+                <li repeat.for="error of validationController.errors">
+                    ${error.message}
+                </li>
+            </ul>
+        </div>
+        <form>
+            <div class="row">
+                <div class="col-md-4 col-sm-4" style="margin-top:24px">
+                    <div class="preview-background img-center center-block">
+                        <img id="logoPreview" style="max-height: 200px; max-width:200px;" src="http://via.placeholder.com/200x200" class="img-center center-block">
+                    </div>
+                    <input type="file" id="selectedFile" files.bind="selectedFiles" change.delegate="refreshImage()" style="display: none;" />
+                    <input type="button" class="btn btn-sm center-block" style="margin-top:5px" value="Przeglądaj..." onclick="document.getElementById('selectedFile').click();"
+                    />
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <div class="form-group text-center">
+                        <label for="university-name">Nazwa</label>
+                        <input type="text" class="form-control input-lg" value.bind="model.name & validate" id="university-name">
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="university-shortcut">Nazwa skrótowa</label>
+                        <input type="text" class="form-control input-lg" value.bind="model.shortcut" id="university-shortcut">
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="university-place">Miasto</label>
+                        <input type="text" class="form-control input-lg" value.bind="model.place & validate" id="university-place">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div class="text-center">
+            <button type="submit" click.delegate="submit()" class="btn btn-primary btn-lg">Zatwierdź</button>
+        </div>
+    </div>
+
+
+</template>

@@ -17,7 +17,6 @@ export class UniversityDetails {
     async activate(params: any) {
         this.model = await this.universityService.getDetails(params.id);
         this.setDepartmentColors();
-        console.log(this.model.courses);
     }
 
     attached() {

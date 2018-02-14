@@ -77,7 +77,7 @@
           {
             "name": "bootstrap",
             "path": "../node_modules/bootstrap/dist",
-            "main": "js/boostrap.min",
+            "main": "js/bootstrap.min",
             "deps": [
               "jquery"
             ],

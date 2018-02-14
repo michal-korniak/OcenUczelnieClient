@@ -8,7 +8,7 @@ import { ValidationControllerFactory, ValidationController } from "aurelia-valid
 import { AddUniversityValidator } from '../validators/add-university-validator'
 
 @autoinject
-export class UniversitiesPanel {
+export class UniversityEditor {
 
     selectedFiles: FileList;
     model: NewUniversityModel;
