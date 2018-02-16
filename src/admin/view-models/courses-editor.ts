@@ -5,6 +5,7 @@ import { UniversityDetailsModel } from "../../universities/models/university-det
 import { CourseModel } from "../../courses/models/course-model";
 import { DepartmentModel } from '../models/department-model';
 import { start } from "repl";
+import { UpdateCoursesModel } from "../../universities/models/update-courses-model";
 
 
 @autoinject()
@@ -12,6 +13,7 @@ export class CourseEditor {
 
     departments: DepartmentModel[];
     universityName: string;
+    universityId:string;
     courseHTML: string;
 
 
@@ -19,6 +21,7 @@ export class CourseEditor {
     constructor(private universityService: UniversityService) { }
 
     async activate(params: any) {
+        this.universityId=params.universityId;
         let universityModel: UniversityDetailsModel = await this.universityService.getDetails(params.universityId);
         this.universityName = universityModel.name;
         let courses: CourseModel[] = universityModel.courses;
@@ -74,13 +77,20 @@ export class CourseEditor {
     }
     deleteDepartment(departmentIndex: number)
     {
-        //are you sure? TODO
+        var numberOfCourses: number=this.departments[departmentIndex].courses.length;
+        if(numberOfCourses>0 && !confirm(`Wewnątrz wydziału znajduje następująca liczba kierunków: ${numberOfCourses}.\nCzy chcesz kontynuować usuwanie?`))
+            return;
         this.departments.splice(departmentIndex,1);
     }
     deleteCourse(department: DepartmentModel, courseIndex: number)
     {
         //are you sure (if course contains review) TODO
         department.courses.splice(courseIndex,1);
+    }
+    async saveChanges()
+    {
+        var updateCourses: UpdateCoursesModel=DepartmentModel.convertArrayToUpdateCoursesModel(this.universityId,this.departments);
+        await this.universityService.updateCourses(updateCourses);
     }
 
 }

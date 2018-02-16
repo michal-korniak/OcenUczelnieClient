@@ -1,4 +1,6 @@
 import {CourseModel} from '../../courses/models/course-model'
+import { UpdateCoursesModel, Course } from '../../universities/models/update-courses-model';
+
 export class DepartmentModel
 {
     name: string;
@@ -31,5 +33,20 @@ export class DepartmentModel
             }
         });
         return departments;
+    }
+    static convertArrayToUpdateCoursesModel(universityId: string,departments: DepartmentModel[]): UpdateCoursesModel
+    {
+        var updateCourses: UpdateCoursesModel=new UpdateCoursesModel();
+        updateCourses.universityId=universityId;
+        departments.forEach(department => {
+            department.courses.forEach(course => {
+                var updateCourse: Course=new Course();
+                updateCourse.id=course.id;
+                updateCourse.name=course.name;
+                updateCourse.department=department.name;
+                updateCourses.courses.push(updateCourse);
+            });
+        });
+        return updateCourses;
     }
 }
