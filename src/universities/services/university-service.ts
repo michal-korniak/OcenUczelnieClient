@@ -6,6 +6,7 @@ import { autoinject } from "aurelia-dependency-injection";
 import { CourseModel } from "../../courses/models/course-model";
 import { UniversityDetailsModel } from "../models/university-details-model";
 import {NewUniversityModel} from "../models/new-university-model";
+import {EditUniversityModel} from "../models/edit-university-model";
 import {UpdateCoursesModel} from "../models/update-courses-model";
 
 @autoinject()
@@ -26,6 +27,10 @@ export class UniversityService extends DataService
     async addUniversity(newUniversity: NewUniversityModel)
     {
         await super.post('university/add_university',true,newUniversity);
+    }
+    async updateUniversity(updatedUniversity: EditUniversityModel)
+    {
+        await super.put('university/update_university',true,updatedUniversity);
     }
     async updateCourses(updateCourses: UpdateCoursesModel)
     {

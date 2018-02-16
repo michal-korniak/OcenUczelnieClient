@@ -6,10 +6,11 @@ import { CourseModel } from "../../courses/models/course-model";
 import { DepartmentModel } from '../models/department-model';
 import { start } from "repl";
 import { UpdateCoursesModel } from "../../universities/models/update-courses-model";
+import { Router } from "aurelia-router";
 
 
 @autoinject()
-export class CourseEditor {
+export class CoursesEditor {
 
     departments: DepartmentModel[];
     universityName: string;
@@ -18,7 +19,7 @@ export class CourseEditor {
 
 
 
-    constructor(private universityService: UniversityService) { }
+    constructor(private universityService: UniversityService, private router:Router) { }
 
     async activate(params: any) {
         this.universityId=params.universityId;
@@ -89,8 +90,19 @@ export class CourseEditor {
     }
     async saveChanges()
     {
+        for(var i=0; i<this.departments.length; ++i)
+         {
+            if(this.departments[i].courses.length==0)
+            {
+                if(confirm("Wydziały nie posiadające kierunków zostaną usunięte.\nCzy chcesz kontynuować?"))
+                    break;
+                else
+                    return;
+            }
+        }
         var updateCourses: UpdateCoursesModel=DepartmentModel.convertArrayToUpdateCoursesModel(this.universityId,this.departments);
         await this.universityService.updateCourses(updateCourses);
+        this.router.navigate("#/home");
     }
 
 }

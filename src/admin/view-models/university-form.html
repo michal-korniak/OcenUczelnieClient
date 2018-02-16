@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-4" style="margin-top:24px">
                     <div class="preview-background img-center center-block">
-                        <img id="logoPreview" style="max-height: 200px; max-width:200px;" src="http://via.placeholder.com/200x200" class="img-center center-block">
+                        <img id="logoPreview" style="max-height: 200px; max-width:200px;" src="data:image/png;base64,${model.base64Image}" class="img-center center-block">
                     </div>
                     <input type="file" id="selectedFile" files.bind="selectedFiles" change.delegate="refreshImage()" style="display: none;" />
                     <input type="button" class="btn btn-sm center-block" style="margin-top:5px" value="Przeglądaj..." onclick="document.getElementById('selectedFile').click();"
