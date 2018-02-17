@@ -1,0 +1,36 @@
+<template>
+    <div class="page-header text-center">
+        <h1>Panel administratora</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nazwa</th>
+                <th>Skrót</th>
+                <th>Miasto</th>
+                <th class="text-center">Logo</th>
+                <th class="text-center">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr repeat.for="university of universities">
+                <th scope="row">${$index+1}</th>
+                <td>${university.name}</td>
+                <td>${university.shortcut}</td>
+                <td>${university.place}</td>
+                <td class="text-center">
+                    <img src="https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=height:30/${university.imagePath}">
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-primary btn-sm" click.delegate="inovkeUniversityEditor(university.id)">Edytor uniwersytetu</button>
+                    <button class="btn btn-warning btn-sm" click.delegate="inovkeCoursesEditor(university.id)">Edytor kierunków</button>
+                    <button class="btn btn-danger btn-sm" click.delegate="removeUniversity(university.id, $index)">Usuń</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+            <button class="btn btn-success" click.delegate="invokeUniversityCreator()">Dodaj uczelnie</button>
+        </div>
+</template>

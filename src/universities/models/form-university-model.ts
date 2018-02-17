@@ -1,4 +1,5 @@
-export class NewUniversityModel {
+export class FormUniversityModel {
+    id: string;
     name: string;
     place: string;
     shortcut: string;
