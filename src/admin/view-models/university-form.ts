@@ -4,7 +4,7 @@ import { Toastr } from "../../core/taostr";
 import { autoinject } from "aurelia-framework";
 import { ApiError } from "../../core/models/api-error";
 import { ValidationControllerFactory, ValidationController } from "aurelia-validation";
-import { AddUniversityValidator } from '../validators/add-university-validator'
+import { FormUniversityValidator } from '../validators/form-university-validator'
 import { FormUniversityModel } from "../../universities/models/form-university-model";
 import { UniversityDetails } from "../../universities/view-models/university-details";
 import { UniversityDetailsModel } from "../../universities/models/university-details-model";
@@ -19,7 +19,7 @@ export class UniversityForm {
     previewSrc: string;
 
     constructor(private universityService: UniversityService, private router: Router, private toastr: Toastr,
-        private controllerFactory: ValidationControllerFactory, private addUniversityValidator: AddUniversityValidator) { }
+        private controllerFactory: ValidationControllerFactory, private addUniversityValidator: FormUniversityValidator) { }
     async activate(params: any) {
         var id: string = params.id;
         if (id != null) {
@@ -67,12 +67,13 @@ export class UniversityForm {
         }
         try {
             console.log(this.model);
+            document.getElementById("submitBtn").setAttribute("disabled","");
             if(this.editorMode==true)
                 await this.universityService.updateUniversity(this.model);
             else
                 await this.universityService.addUniversity(this.model)
 
-            this.router.navigate("#/home");
+            this.router.navigate("#/admin");
         }
         catch (ex) {
             let error: ApiError = ex;

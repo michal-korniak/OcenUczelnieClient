@@ -20,16 +20,15 @@
                             <p>
                                 <strong>Wybierz wydział</strong>
                             </p>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-filter" data-target="all">Wszystko</button>
-                            </div>
-                            <div class="btn-group" repeat.for="department of model.departments">
-
-                                <button type="button" class="btn btn-sm btn-filter ${getBtnClass(department)}" style="white-space:normal" data-target="${department}">${department}</button>
+                            <div class="btn-group-filters">
+                                <button type="button" class="btn btn-sm btn-filter text-center" data-target="all">Wszystko</button>
+                                <br>
+                                <button type="button" class="btn btn-sm btn-filter ${getBtnClass(department)} text-center"  style="white-space:normal" repeat.for="department of model.departments"
+                                    data-target="${department}">${department}</button>
                             </div>
                         </div>
 
-                        <div class="table-container" style="margin-top:15px">
+                        <div class="table-container" style="margin-top:30px">
                             <table class="table table-filter">
                                 <tbody repeat.for="course of model.courses">
                                     <tr data-status="${course.department}">

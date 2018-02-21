@@ -26,3 +26,4 @@ node_modules
 # Compiled files
 scripts
 images
+wwwroot/*

@@ -7,13 +7,14 @@ import { LoginUserModel } from "../models/login-user-model";
 import { AuthService } from "../../core/auth-service";
 import { AuthModel } from "../../core/models/auth-model";
 import { UserModel } from "../models/user-model";
+import { AureliaConfiguration } from "aurelia-configuration";
 
 @autoinject()
 export class UserService extends DataService
 {
-    constructor(httpClient: HttpClient, authService: AuthService)
+    constructor(httpClient:HttpClient,authService:AuthService, config: AureliaConfiguration)
     {
-        super(httpClient,authService);
+        super(httpClient,authService,config);
     }
     async registerUser(model: RegisterUserModel): Promise<UserModel>
     {

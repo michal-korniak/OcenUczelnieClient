@@ -7,13 +7,14 @@ import { CourseModel } from "../../courses/models/course-model";
 import { UniversityDetailsModel } from "../models/university-details-model";
 import { FormUniversityModel } from "../../universities/models/form-university-model";
 import {UpdateCoursesModel} from "../models/update-courses-model";
+import { AureliaConfiguration } from "aurelia-configuration";
 
 @autoinject()
 export class UniversityService extends DataService
 {
-    constructor(authService: AuthService, httpClient: HttpClient)
+    constructor(httpClient:HttpClient,authService:AuthService, config: AureliaConfiguration)
     {
-        super(httpClient,authService);
+        super(httpClient,authService,config);
     }
     async browseAll(): Promise<UniversityModel[]>
     {

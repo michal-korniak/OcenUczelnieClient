@@ -57,6 +57,11 @@
           "aurelia-templating",
           "aurelia-templating-binding",
           {
+            "name": "aurelia-configuration",
+            "path": "../node_modules/aurelia-configuration/dist/amd",
+            "main": "index"
+          },
+          {
             "name": "aurelia-templating-resources",
             "path": "../node_modules/aurelia-templating-resources/dist/amd",
             "main": "aurelia-templating-resources"

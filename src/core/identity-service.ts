@@ -3,13 +3,15 @@ import { DataService } from "./data-service";
 import { HttpClient } from "aurelia-fetch-client";
 import { autoinject } from "aurelia-dependency-injection";
 import { IdentityModel } from "./models/identity-model";
+import { AureliaConfiguration } from "aurelia-configuration";
 
 @autoinject()
 export class IdentityService extends DataService {
     identityModel: IdentityModel;
 
-    constructor(httpClient: HttpClient, authService: AuthService) {
-        super(httpClient, authService);
+    constructor(httpClient:HttpClient,authService:AuthService, config: AureliaConfiguration)
+    {
+        super(httpClient,authService,config);
     }
     public async getIdentityModel(): Promise<IdentityModel> {
 

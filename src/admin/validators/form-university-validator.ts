@@ -1,15 +1,15 @@
 import {ValidationRules} from 'aurelia-validation'
-import {NewUniversityModel} from '../../universities/models/new-university-model'
+import { FormUniversityModel } from '../../universities/models/form-university-model';
 
-export class AddUniversityValidator
+export class FormUniversityValidator
 {
-    validate(model: NewUniversityModel)
+    validate(model: FormUniversityModel)
     {
         ValidationRules
-        .ensure((m:NewUniversityModel)=>m.name)
+        .ensure((m:FormUniversityModel)=>m.name)
             .required().withMessage("Nazwa jest wymagana.")
             .minItems(6).withMessage("Nazwa jest za krótka.")
-        .ensure((m:NewUniversityModel)=>m.place)
+        .ensure((m:FormUniversityModel)=>m.place)
             .required().withMessage("Miasto jest wymagane.")
         .on(model);
     }

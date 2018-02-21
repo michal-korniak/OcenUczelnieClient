@@ -101,8 +101,9 @@ export class CoursesEditor {
             }
         }
         var updateCourses: UpdateCoursesModel=DepartmentModel.convertArrayToUpdateCoursesModel(this.universityId,this.departments);
+        document.getElementById("submitBtn").setAttribute("disabled","");
         await this.universityService.updateCourses(updateCourses);
-        this.router.navigate("#/home");
+        this.router.navigate("#/admin");
     }
 
 }

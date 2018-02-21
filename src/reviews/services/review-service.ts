@@ -3,13 +3,14 @@ import { autoinject } from "aurelia-framework";
 import { HttpClient } from "aurelia-fetch-client";
 import { AuthService } from "../../core/auth-service";
 import { NewReviewModel } from "../models/new-review-model";
+import { AureliaConfiguration } from "aurelia-configuration";
 
 @autoinject()
 export class ReviewService extends DataService
 {
-    constructor(httpClient: HttpClient, authService:AuthService) {
-        super(httpClient,authService);
-        
+    constructor(httpClient:HttpClient,authService:AuthService, config: AureliaConfiguration)
+    {
+        super(httpClient,authService,config);
     }
     async postReview(courseId: string,newReview:NewReviewModel)
     {

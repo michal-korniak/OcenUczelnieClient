@@ -1,10 +1,14 @@
 import { HttpClient, json } from 'aurelia-fetch-client'
 import { AuthService } from './auth-service';
 import { ApiError } from './models/api-error';
+import {AureliaConfiguration} from 'aurelia-configuration';
+import { autoinject } from 'aurelia-framework';
 
 export abstract class DataService {
-    constructor(private httpClient: HttpClient, protected authService: AuthService) {
-        httpClient.configure(c => c.withBaseUrl('http://localhost:5000/'));
+    constructor(private httpClient: HttpClient, protected authService: AuthService, config: AureliaConfiguration) {
+        var apiUrl=config.get("api");
+        console.log(apiUrl);
+        httpClient.configure(c => c.withBaseUrl(apiUrl));
     }
     protected async get<TResult>(path: string, isSecured: boolean = false): Promise<TResult> {
         return this.createRequest<TResult>(path, 'GET', isSecured);
