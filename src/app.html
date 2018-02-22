@@ -2,22 +2,39 @@
   <require from="bootstrap/css/bootstrap.css"></require>
   <require from="toastr/build/toastr.min.css"></require>
   <require from="splash-screen/splash-screen-tailing.min.css"></require>
-  <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">OcenUczelnie!</a>
-        </div>
-        <div class="navbar-right">
-          <div if.bind="!identityService.isUserLogged()">
-            <a class="navbar-brand" href="#/user/register">Rejestracja</a>
-            <a class="navbar-brand" href="#/user/login">Logowanie</a>
-          </div>
-          <div if.bind="identityService.isUserLogged()">
-              <a class="navbar-brand" href="#/user/logout">Wyloguj</a>
-          </div>
-        </div>
-      </div>                             
-    </nav>
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand" style="font-size:14px">
+          Strona Główna
+        </a>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right" if.bind="!identityService.isUserLogged()">
+          <li>
+            <a href="#/user/register">Rejestracja</a>
+          </li>
+          <li>
+            <a href="#/user/login">Logowanie</a>
+          </li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right" if.bind="identityService.isUserLogged()">
+          <li>
+            <a href="#/user/login">Wyloguj</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
     <router-view></router-view>
   </div>

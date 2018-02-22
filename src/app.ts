@@ -3,10 +3,11 @@ import { AuthorizeStep } from "./core/authorize-step";
 import { IdentityService } from "./core/identity-service";
 import { autoinject } from "aurelia-dependency-injection";
 import { enable, destroy } from 'splash-screen';
+import { AureliaConfiguration } from "aurelia-configuration";
 
 @autoinject()
 export class App {
-  constructor(private identityService: IdentityService) {
+  constructor(private identityService: IdentityService, config:AureliaConfiguration) {
     enable('tailing');
   }
 

@@ -17,6 +17,7 @@ export class UniversityDetails {
     async activate(params: any) {
         this.model = await this.universityService.getDetails(params.id);
         this.setDepartmentColors();
+        window.scroll(0,0);
     }
 
     attached() {
